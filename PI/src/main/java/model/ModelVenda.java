@@ -2,21 +2,30 @@ package model;
 
 import java.util.Date;
 
-public class ModelVendas {
+public class ModelVenda {
     // Atributos de vendas
 
-    private int  id;
+    private int idVendas;
     private Date datavenda;
     private double totalVenda;
+
+    private ModelCliente idCliente;
+
     // Criou os constructors
-    public ModelVendas(int id, Date datavenda, double totalVenda) {
-        this.id = id;
+    public ModelVenda(int idVendas, Date datavenda, double totalVenda) {
+        this.idVendas = idVendas;
         this.datavenda = datavenda;
         this.totalVenda = totalVenda;
     }
     // Criou os Getters
-    public int getId() {
-        return id;
+
+
+    public ModelCliente getIdCliente() {
+        return idCliente;
+    }
+
+    public int getIdVendas() {
+        return idVendas;
     }
 
     public Date getDatavenda() {
@@ -27,8 +36,14 @@ public class ModelVendas {
         return totalVenda;
     }
     // Criou os Setteres
-    public void setId(int id) {
-        this.id = id;
+
+
+    public void setIdCliente(ModelCliente idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public void setIdVendas(int idVendas) {
+        this.idVendas = idVendas;
     }
 
     public void setDatavenda(Date datavenda) {
