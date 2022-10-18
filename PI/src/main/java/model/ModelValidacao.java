@@ -1,0 +1,56 @@
+package model;
+
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+/**
+ *
+ * @author Resilia
+ */
+public class ModelValidacao {
+
+    public ArrayList<String> mensagemErro = new ArrayList<>();
+
+    public ArrayList<String> getMensagemErro() {
+        return mensagemErro;
+    }
+
+    public void validarNumero(JTextField txt) {
+        try {
+            if (txt.getText().trim().equals("")) {
+                throw new IllegalArgumentException();
+            }
+            int valorConvertido = Integer.parseInt(txt.getText());
+            txt.setBackground(Color.WHITE);
+        } catch (NumberFormatException e) {
+            mensagemErro.add("Falha ao converter o valor do campo "+txt.getName()+"em inteiro");
+            txt.setBackground(Color.RED);
+        }
+        catch (IllegalArgumentException e) {
+            mensagemErro.add("digite um valor para o campo "+txt.getName());
+            txt.setBackground(Color.RED);
+        }
+
+    }
+    public void validarString(JTextField txt) {
+        try {
+            if (txt.getText().trim().equals("")) {
+                throw new IllegalArgumentException();
+            }
+            txt.setBackground(Color.WHITE);
+        } catch (Exception e) {
+            mensagemErro.add("Insira o valor no campo "+txt.getName());
+                txt.setBackground(Color.red);
+        }
+      
+
+    }
+
+}
