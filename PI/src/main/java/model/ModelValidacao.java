@@ -1,7 +1,9 @@
 package model;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -52,5 +54,31 @@ public class ModelValidacao {
       
 
     }
+    public void validarStringFormatado(JFormattedTextField txt) {
+        
+        try {
+            if (txt.getText().trim().equals("")) {
+                throw new IllegalArgumentException();
+            }
+            txt.setBackground(Color.WHITE);
+        } catch (Exception e) {
+            mensagemErro.add("Insira o valor no campo "+txt.getName());
+                txt.setBackground(Color.red);
+        }
+      
 
+    }
+
+    public void validarTeclasNumericas(KeyEvent evt, JTextField txt){
+        
+        //Permitir somente caracteres numéricos
+        char c = evt.getKeyChar();
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            
+            JOptionPane.showMessageDialog(null, "Digite somente números");
+            txt.grabFocus();
+            txt.setText("");
+        }
+    }
 }
