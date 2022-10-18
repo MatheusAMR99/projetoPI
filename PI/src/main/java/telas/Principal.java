@@ -4,8 +4,6 @@
  */
 package telas;
 
-import com.mycompany.mavenproject1.TeladeVendas;
-
 
 /**
  *
