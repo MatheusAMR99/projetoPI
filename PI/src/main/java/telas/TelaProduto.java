@@ -5,6 +5,7 @@
 package telas;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import model.ModelValidacao;
 
 /**
@@ -210,11 +211,19 @@ public class TelaProduto extends javax.swing.JFrame {
         modelValidacao.validarString(jTextField1);
         modelValidacao.validarString(jTextField2);
         modelValidacao.validarString(jTextField3);
+        
+        if(jTextField3.getText().trim().equals("")){
+            modelValidacao.validarString(jTextField3);
+        }else{
+            Double exemplo = Double.parseDouble(jTextField3.getText().replace(",", "."));
+            //JOptionPane.showMessageDialog(this, "Valor: "+exemplo);
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
         ModelValidacao modelValidacao = new ModelValidacao();
-        modelValidacao.validarTeclasNumericas(evt, txtID);
+        modelValidacao.validarTeclasNumericas(evt, jTextField2);
     }//GEN-LAST:event_jTextField2KeyPressed
 
     /**

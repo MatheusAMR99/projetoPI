@@ -41,6 +41,23 @@ public class ModelValidacao {
         }
 
     }
+    public void validarNumeroFormatado(JFormattedTextField txt) {
+        try {
+            if (txt.getText().trim().equals("")) {
+                throw new IllegalArgumentException();
+            }
+            int valorConvertido = Integer.parseInt(txt.getText());
+            txt.setBackground(Color.WHITE);
+        } catch (NumberFormatException e) {
+            mensagemErro.add("Falha ao converter o valor do campo "+txt.getName()+"em inteiro");
+            txt.setBackground(Color.RED);
+        }
+        catch (IllegalArgumentException e) {
+            mensagemErro.add("digite um valor para o campo "+txt.getName());
+            txt.setBackground(Color.RED);
+        }
+
+    }
     public void validarString(JTextField txt) {
         try {
             if (txt.getText().trim().equals("")) {
