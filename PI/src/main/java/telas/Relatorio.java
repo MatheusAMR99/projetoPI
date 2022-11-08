@@ -4,7 +4,7 @@
  */
 package telas;
 
-import model.ModelValidacao;
+import util.Validacao;
 
 /**
  *
@@ -179,20 +179,20 @@ public class Relatorio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ModelValidacao modelValidacao = new ModelValidacao();
+        Validacao modelValidacao = new Validacao();
         modelValidacao.validarString(jFormattedTextField1);
         DetalhesRelatorio detalhe = new DetalhesRelatorio();
         detalhe.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        ModelValidacao modelValidacao = new ModelValidacao();
+        Validacao modelValidacao = new Validacao();
         modelValidacao.validarString(jFormattedTextField1);
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jFormattedTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField1KeyPressed
-        ModelValidacao modelValidacao = new ModelValidacao();
+        Validacao modelValidacao = new Validacao();
         modelValidacao.validarString(jFormattedTextField1);
     }//GEN-LAST:event_jFormattedTextField1KeyPressed
 

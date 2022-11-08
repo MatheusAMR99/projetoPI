@@ -2,7 +2,7 @@ package model;
 
 public class ModelProduto {
 
-    private long idProduto;
+    private int idProduto;
     private String nome;
     private String categoria;
     private int quantidade;
@@ -10,11 +10,11 @@ public class ModelProduto {
     private float valor;
 
 
-    public long getIdProduto() {
+    public int getIdProduto() {
         return idProduto;
     }
 
-    public void setIdProduto(long idProduto) {
+    public void setIdProduto(int idProduto) {
         this.idProduto = idProduto;
     }
 
@@ -58,7 +58,7 @@ public class ModelProduto {
         this.valor = valor;
     }
 
-    public ModelProduto(long idProduto, String nome, String categoria, int quantidade, String marca, float valor) {
+    public ModelProduto(int idProduto, String nome, String categoria, int quantidade, String marca, float valor) {
         this.idProduto = idProduto;
         this.nome = nome;
         this.categoria = categoria;

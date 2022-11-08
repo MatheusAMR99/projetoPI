@@ -6,7 +6,7 @@ package telas;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import model.ModelValidacao;
+import util.Validacao;
 
 /**
  *
@@ -207,7 +207,7 @@ public class TelaProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ModelValidacao modelValidacao = new ModelValidacao();
+        Validacao modelValidacao = new Validacao();
         modelValidacao.validarString(jTextField1);
         modelValidacao.validarString(jTextField2);
         modelValidacao.validarString(jTextField3);
@@ -222,7 +222,7 @@ public class TelaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-        ModelValidacao modelValidacao = new ModelValidacao();
+        Validacao modelValidacao = new Validacao();
         modelValidacao.validarTeclasNumericas(evt, jTextField2);
     }//GEN-LAST:event_jTextField2KeyPressed
 

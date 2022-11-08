@@ -4,7 +4,7 @@
  */
 package telas;
 
-import model.ModelValidacao;
+import util.Validacao;
 
 /**
  *
@@ -173,7 +173,7 @@ public class RelatorioFornecedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ModelValidacao validar = new ModelValidacao();
+        Validacao validar = new Validacao();
         validar.validarString(jTextField1);
         validar.validarString(jTextField2);
         validar.validarString(jTextField5);

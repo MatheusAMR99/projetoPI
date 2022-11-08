@@ -4,7 +4,7 @@
  */
 package telas;
 
-import model.ModelValidacao;
+import util.Validacao;
 
 /**
  *
@@ -179,14 +179,14 @@ public class TelaRelatorio extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ModelValidacao modelValidacao = new ModelValidacao();
+        Validacao modelValidacao = new Validacao();
         modelValidacao.validarString(jTextField1);
         modelValidacao.validarString(jTextField2);
         modelValidacao.validarString(jTextField3);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jFormattedTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField2KeyPressed
-        ModelValidacao modelValidacao = new ModelValidacao();
+        Validacao modelValidacao = new Validacao();
         modelValidacao.validarString(jFormattedTextField2);
     }//GEN-LAST:event_jFormattedTextField2KeyPressed
 
