@@ -6,7 +6,7 @@ public class ModelProduto {
     private String nome;
     private String categoria;
     private int quantidade;
-    private String marca;
+
     private float valor;
 
 
@@ -42,14 +42,6 @@ public class ModelProduto {
         this.quantidade = quantidade;
     }
 
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
     public float getValor() {
         return valor;
     }
@@ -58,14 +50,15 @@ public class ModelProduto {
         this.valor = valor;
     }
 
-    public ModelProduto(int idProduto, String nome, String categoria, int quantidade, String marca, float valor) {
+    public ModelProduto(int idProduto, String nome, String categoria, int quantidade, float valor) {
         this.idProduto = idProduto;
         this.nome = nome;
         this.categoria = categoria;
         this.quantidade = quantidade;
-        this.marca = marca;
         this.valor = valor;
+    }
 
-
+    public ModelProduto() {
+        
     }
 }

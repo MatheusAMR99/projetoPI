@@ -9,12 +9,17 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import javax.swing.plaf.synth.SynthTableUI;
 import javax.swing.table.DefaultTableModel;
 import model.ModelCliente;
 import util.Validacao;
@@ -34,12 +39,13 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtID.setBackground(Color.LIGHT_GRAY);
         txtPesquisar.grabFocus();
         lblMensagem.setText("");
+        lblMensagem.setForeground(Color.red);
         //txtDataNascimento.setDate(new Date());
         txtDataNascimento.setDateFormatString("dd/MM/yyyy");
         txtDataNascimento.setMaxSelectableDate(new Date());
 //        txtDataNascimento.setSelectableDateRange(date, date1);
         listar();
-        
+
         //COLOCA O ICONE NA TELA
         URL url = this.getClass().getResource("/icone.png");
         Image logo = Toolkit.getDefaultToolkit().getImage(url);
@@ -81,8 +87,6 @@ public class CadastroCliente extends javax.swing.JFrame {
         dadosEndereco = new javax.swing.JPanel();
         cep = new javax.swing.JLabel();
         txtCEP = new javax.swing.JFormattedTextField();
-        endereco = new javax.swing.JLabel();
-        txtEndereco = new javax.swing.JTextField();
         numero = new javax.swing.JLabel();
         txtNumero = new javax.swing.JTextField();
         bairro = new javax.swing.JLabel();
@@ -91,6 +95,8 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtCidade = new javax.swing.JTextField();
         comp = new javax.swing.JLabel();
         txtComplemento = new javax.swing.JTextField();
+        endereco = new javax.swing.JLabel();
+        txtEndereco = new javax.swing.JTextField();
         lblMensagem = new javax.swing.JLabel();
         dadosTabela = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -119,6 +125,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         id.setText("ID: ");
 
+        txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtID.setToolTipText("Identificador do cliente");
         txtID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         txtID.setEnabled(false);
@@ -170,7 +177,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         cboSexo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cboSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Feminino", "Masculino", "Outro", "Prefiro não dizer" }));
         cboSexo.setToolTipText("Opção sexo");
-        cboSexo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        cboSexo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         cboSexo.setEnabled(false);
 
         estado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -290,14 +297,6 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtCEP.setToolTipText("CEP do endereço");
         txtCEP.setEnabled(false);
 
-        endereco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        endereco.setText("Logradouro");
-
-        txtEndereco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEndereco.setToolTipText("Endereço");
-        txtEndereco.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        txtEndereco.setEnabled(false);
-
         numero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         numero.setText("Número");
 
@@ -330,6 +329,14 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtComplemento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         txtComplemento.setEnabled(false);
 
+        endereco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        endereco.setText("Logradouro");
+
+        txtEndereco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEndereco.setToolTipText("Endereço");
+        txtEndereco.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        txtEndereco.setEnabled(false);
+
         javax.swing.GroupLayout dadosEnderecoLayout = new javax.swing.GroupLayout(dadosEndereco);
         dadosEndereco.setLayout(dadosEnderecoLayout);
         dadosEnderecoLayout.setHorizontalGroup(
@@ -338,43 +345,44 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addGroup(dadosEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dadosEnderecoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(cep)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(endereco)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(numero)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNumero))
-                    .addGroup(dadosEnderecoLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(comp)
                         .addGap(18, 18, 18)
                         .addComponent(txtComplemento))
                     .addGroup(dadosEnderecoLayout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(bairro)
+                        .addGroup(dadosEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cep, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bairro, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(dadosEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(dadosEnderecoLayout.createSequentialGroup()
+                                .addComponent(txtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addComponent(numero)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtNumero))
+                            .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(cidade)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCidade)))
+                        .addGroup(dadosEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cidade, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(endereco, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(dadosEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCidade)
+                            .addComponent(txtEndereco))))
                 .addContainerGap())
         );
         dadosEnderecoLayout.setVerticalGroup(
             dadosEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dadosEnderecoLayout.createSequentialGroup()
-                .addGroup(dadosEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cep)
-                    .addComponent(txtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(dadosEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dadosEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cep)
+                        .addComponent(txtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(numero)
+                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(endereco)
-                    .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numero)
-                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(dadosEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bairro)
@@ -568,15 +576,15 @@ public class CadastroCliente extends javax.swing.JFrame {
             botoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(botoesLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                 .addGap(78, 78, 78)
-                .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                 .addGap(76, 76, 76)
-                .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                 .addGap(59, 59, 59)
-                .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                 .addGap(112, 112, 112)
-                .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
         );
         botoesLayout.setVerticalGroup(
@@ -640,7 +648,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        
+
         limparCampos();
         habilitarCampos();
     }//GEN-LAST:event_btnNovoActionPerformed
@@ -655,7 +663,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         String pesquisa = txtPesquisar.getText();
         if (pesquisa.trim().equals("")) {
             listar();
-        }else{
+        } else {
             listarPorNome();
         }
 
@@ -682,9 +690,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     public void validar() {
-        Validacao validar = new Validacao();
         List<Boolean> verificar = new ArrayList<>();
-
         verificar.add(validar.validarString(txtNome));
         verificar.add(validar.validarNumeroFormatado(txtCPF));
         verificar.add(validar.validarString(txtEndereco));
@@ -694,26 +700,21 @@ public class CadastroCliente extends javax.swing.JFrame {
 //            validar.validarString(txtBairro);
 //            validar.validarString(txtCidade);
 //            validar.validarString(txtComplemento);
+
         verificar.add(validar.validarString(txtNumero));
-        if(txtDataNascimento.getDate() == null){
+        if (txtDataNascimento.getDate() == null) {
             txtDataNascimento.setBorder(new LineBorder(Color.RED));
             lblMensagem.setText("Preencha os campos");
             lblMensagem.setForeground(Color.red);
+        } else {
+            txtDataNascimento.setBorder(bordaPadrao);
         }
-
         if (verificar.contains(false)) {
             txtNome.grabFocus();
-            this.validar.getMensagemErro();
             lblMensagem.setText("Preencha os campos");
-            lblMensagem.setForeground(Color.red);
-            
-        }else{
+        } else {
             salvar();
         }
-
-        
-
-        //JOptionPane.showMessageDialog(this, "Não foi possível realizar o cadastro");
     }
 
     public void salvar() {
@@ -721,17 +722,14 @@ public class CadastroCliente extends javax.swing.JFrame {
         ModelCliente clienteCadastrado = ClienteDAO.buscarCPF(cpf);
         System.out.println("CPF ENCONTRADO: " + cpf);
         if (txtID.getText().trim().equals("")) {
-            //se estiver vazio cadastra
             if (cpf.equals(clienteCadastrado.getCpf())) {
+                txtCPF.setBorder(new LineBorder(Color.RED));
                 JOptionPane.showMessageDialog(this, "CPF já consta na base de dados");
-                validar.validarNumeroFormatado(txtCEP);
                 txtCPF.setText("");
                 txtCPF.grabFocus();
-
             } else {
                 txtDataNascimento.setBorder(bordaPadrao);
                 ModelCliente clienteModel = new ModelCliente();
-
                 clienteModel.setNome(txtNome.getText());
                 clienteModel.setCpf(txtCPF.getText());
                 clienteModel.setEndereco(txtEndereco.getText());
@@ -748,14 +746,9 @@ public class CadastroCliente extends javax.swing.JFrame {
                 ClienteDAO.salvar(clienteModel);
                 JOptionPane.showMessageDialog(this, "cadastro realizado com sucesso");
                 limparCampos();
-                desahabilitarCampos();
+                desabilitarCampos();
             }
-//            txtDataNascimento.setBorder(new LineBorder(Color.RED));
-//            lblMensagem.setText("Preencha a data");
-
         } else {
-            //altera
-            //editar();
             ModelCliente cliente = new ModelCliente(Integer.parseInt(txtID.getText()), txtNome.getText(), txtCPF.getText(),
                     txtEndereco.getText(), txtTelefone.getText(), txtEmail.getText(), cboSexo.getSelectedItem().toString(),
                     cboEstadoCivil.getSelectedItem().toString(), txtDataNascimento.getDate(), txtCEP.getText(),
@@ -764,7 +757,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             if (retorno) {
                 JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso!");
                 limparCampos();
-                desahabilitarCampos();
+                desabilitarCampos();
             } else {
                 JOptionPane.showMessageDialog(this, "Falha ao atualizar informações!");
             }
@@ -779,8 +772,8 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtTelefone.setText("");
         txtCPF.setText("");
         txtEmail.setText("");
-       // txtDataNascimento.setDate(new Date());
-       txtDataNascimento.setBorder(bordaPadrao);
+        // txtDataNascimento.setDate(new Date());
+        txtDataNascimento.setBorder(bordaPadrao);
         txtCEP.setText("");
         txtEndereco.setText("");
         txtNumero.setText("");
@@ -799,7 +792,6 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtEmail.setEnabled(true);
         txtDataNascimento.setEnabled(true);
 
-        
         cboSexo.setEnabled(true);
         cboEstadoCivil.setEnabled(true);
 
@@ -814,7 +806,7 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     }
 
-    public void desahabilitarCampos() {
+    public void desabilitarCampos() {
         txtNome.setEnabled(false);
         txtTelefone.setEnabled(false);
         txtCPF.setEnabled(false);
@@ -855,7 +847,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             });
         }
     }
-    
+
     public void listarPorNome() {
         String nome = txtPesquisar.getText();
         ArrayList<ModelCliente> lista = ClienteDAO.listarPorNome(nome);
@@ -904,10 +896,13 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtEmail.setText(tblCliente.getValueAt(linha, 4).toString());
         cboSexo.setSelectedItem(tblCliente.getValueAt(linha, 5).toString());
         cboEstadoCivil.setSelectedItem(tblCliente.getValueAt(linha, 6).toString());
-        System.out.println("DATA " + txtDataNascimento.getDateFormatString());
-        txtDataNascimento.setDateFormatString("dd/MM/yyyy");
-        txtDataNascimento.setDate(new java.sql.Date(Long.parseLong(tblCliente.getValueAt(linha, 7).toString())));
-//        txtDataNascimento.setDateFormatString(tblCliente.getValueAt(linha, 7).toString().replace("-", "/"));
+//        System.out.println("FORMATO DATA " + txtDataNascimento.getDateFormatString());
+//        System.out.println("DATA: " + tblCliente.getValueAt(linha, 7).toString());
+//
+//        txtDataNascimento.setDateFormatString("dd/MM/yyyy");
+
+        //txtDataNascimento.setDateFormatString(tblCliente.getValueAt(linha, 7).toString().replace("-", "/"));
+        //.setDate(new Date(txtDataNascimento.getDateFormatString()));
         //txtDataNascimento.setDate((Date) tblCliente.getValueAt(linha, 7));
         txtCEP.setText(tblCliente.getValueAt(linha, 8).toString());
         txtEndereco.setText(tblCliente.getValueAt(linha, 9).toString());
@@ -916,6 +911,30 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtComplemento.setText(tblCliente.getValueAt(linha, 12).toString());
         txtNumero.setText(tblCliente.getValueAt(linha, 13).toString());
 
+        SimpleDateFormat dataCalendario = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dataBanco = new SimpleDateFormat("yyyy/MM/dd");
+        String dataSalva = dataBanco.format(tblCliente.getValueAt(linha, 7));
+        //dataCalendario.parse(dataSalva);
+
+        try {
+            System.out.println("DATA FORMATO CALENDARIO: " + dataCalendario.parse(dataSalva));
+            txtDataNascimento.setDate(dataCalendario.parse(dataSalva));
+//            txtDataNascimento.setDate(formatarData.parse(String.valueOf(tblCliente.getValueAt(linha, 7))));//funciona
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //System.out.println("Data salva formatada: " + formatarData.format(tblCliente.getValueAt(linha, 7)));
+//        System.out.println("DATA: " + formatarData.format(tblCliente.getValueAt(linha, 7)));
+// Date dataSalva = new Date(tblCliente.getValueAt(linha, 7).toString());//formatarData.format(tblCliente.getValueAt(linha, 7).toString())
+//
+//txtDataNascimento.setDate(dataSalva);
+//txtDataNascimento.setDate( new Date(formatarData.format(tblCliente.getValueAt(linha, 7))));
+
+        // txtDataNascimento.setDateFormatString(formatarData.toPattern());
+        //txtDataNascimento.setDate());
+        //txtDataNascimento.setDate(new java.util.Date(tblCliente.getValueAt(linha, 7).toString()));
+        //txtDataNascimento.setDate(new java.sql.Date(Long.parseLong(tblCliente.getValueAt(linha, 7).toString())));
+        //txtDataNascimento.setDateFormatString(formatarData.toPattern());
     }
 
     /**
