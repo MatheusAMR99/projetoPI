@@ -4,7 +4,9 @@
  */
 package telas;
 
-import model.ModelValidacao;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import util.Validacao;
 
 /**
  *
@@ -199,27 +201,35 @@ public class TeladeVendas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        ModelValidacao modelValidacao = new ModelValidacao();
+        Validacao modelValidacao = new Validacao();
         modelValidacao.validarTeclasNumericas(evt, jTextField1);
 
 
     }//GEN-LAST:event_jTextField1KeyPressed
 
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-        ModelValidacao modelValidacao = new ModelValidacao();
+        Validacao modelValidacao = new Validacao();
         modelValidacao.validarTeclasNumericas(evt, jTextField2);
     }//GEN-LAST:event_jTextField2KeyPressed
 
     private void jFormattedTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField1KeyPressed
-        ModelValidacao modelValidacao = new ModelValidacao();
+        Validacao modelValidacao = new Validacao();
         modelValidacao.validarTeclasNumericas(evt, jFormattedTextField1);
     }//GEN-LAST:event_jFormattedTextField1KeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ModelValidacao modelValidacao = new ModelValidacao();
+        Validacao modelValidacao = new Validacao();
+        //JOptionPane.showMessageDialog(this, jFormattedTextField1.getText());
         modelValidacao.validarString(jTextField1);
         modelValidacao.validarString(jTextField2);
-        modelValidacao.validarString(jFormattedTextField1);
+        //JOptionPane.showMessageDialog(this, "MASCARA = "+ jFormattedTextField1.getFormatter());
+        if(jFormattedTextField1.getText().replace(".", "").replace("-", "").trim().equals("")){
+            //JOptionPane.showMessageDialog(this, "Campo vazio = "+ jFormattedTextField1.getText());
+            jFormattedTextField1.setBackground(Color.RED);
+        }else{
+            jFormattedTextField1.setBackground(Color.WHITE);
+        }
+        //modelValidacao.validarString(jFormattedTextField1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
