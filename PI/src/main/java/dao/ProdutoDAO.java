@@ -120,9 +120,9 @@ public class ProdutoDAO {
                     ModelProduto produto = new ModelProduto();
                     produto.setIdProduto(rs.getInt("idProduto"));
                     produto.setNome(rs.getString("nome"));
-                    produto.setCategoria("categoria");
-                    produto.setQuantidade(produto.getQuantidade());
-                    produto.setValor(produto.getValor());
+                    produto.setCategoria(rs.getString("categoria"));
+                    produto.setQuantidade(rs.getInt("quantidade"));
+                    produto.setValor(rs.getFloat("valor"));
 
                     lista.add(produto);
                 }
@@ -136,6 +136,38 @@ public class ProdutoDAO {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lista;
+    }
+    
+    public static ModelProduto listarPorCodigo(int id) {
+        String sql = "SELECT * FROM produto WHERE idProduto= ?;";
+
+        Connection conexao = null;
+        PreparedStatement comandoSQL = null;
+        ModelProduto produto = new ModelProduto();
+        try {
+            conexao = Conexao.abrirConexao();
+            comandoSQL = conexao.prepareStatement(sql);
+            comandoSQL.setInt(1, id);
+            ResultSet rs = comandoSQL.executeQuery();
+
+            if (rs != null) {
+                while (rs.next()) {
+                    produto.setIdProduto(rs.getInt("idProduto"));
+                    produto.setNome(rs.getString("nome"));
+                    produto.setCategoria(rs.getString("categoria"));
+                    produto.setQuantidade(rs.getInt("quantidade"));
+                    produto.setValor(rs.getFloat("valor"));
+                }
+
+            } else {
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return produto;
     }
 
     public static boolean editar(ModelProduto produto) {
@@ -178,6 +210,43 @@ public class ProdutoDAO {
         return retorno;
     }
 
+    public static boolean atualizarQuantidade(ModelProduto produto) {
+        String sql = "UPDATE produto SET "
+                + "quantidade=?"
+                + "WHERE idProduto=?; ";
+
+        boolean retorno = false;
+        Connection conexao = null;
+        PreparedStatement comandoSQL = null;
+
+        try {
+            conexao = Conexao.abrirConexao();
+            comandoSQL = conexao.prepareStatement(sql);
+            comandoSQL.setInt(1, produto.getQuantidade());
+            comandoSQL.setInt(2, produto.getIdProduto());
+
+            int resultado = comandoSQL.executeUpdate();
+            if (resultado > 0) {
+                retorno = true;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (comandoSQL != null) {
+                    comandoSQL.close();
+                    Conexao.fecharConexao();
+                }
+            } catch (SQLException e) {
+            }
+        }
+
+        return retorno;
+    }
+    
     public static boolean excluir(int id) {
         String sql = "DELETE FROM produto WHERE idProduto =?;";
 

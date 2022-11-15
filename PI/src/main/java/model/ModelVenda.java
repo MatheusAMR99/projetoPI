@@ -7,12 +7,17 @@ public class ModelVenda {
 
     private int idVendas;
     private Date datavenda;
-    private double totalVenda;
+    private float totalVenda;
 
     private ModelCliente idCliente;
+    private ModelProduto idProduto;
 
+    public ModelVenda() {
+    }
+
+    
     // Criou os constructors
-    public ModelVenda(int idVendas, Date datavenda, double totalVenda) {
+    public ModelVenda(int idVendas, Date datavenda, float totalVenda) {
         this.idVendas = idVendas;
         this.datavenda = datavenda;
         this.totalVenda = totalVenda;
@@ -32,7 +37,7 @@ public class ModelVenda {
         return datavenda;
     }
 
-    public double getTotalVenda() {
+    public float getTotalVenda() {
         return totalVenda;
     }
     // Criou os Setteres
@@ -50,10 +55,18 @@ public class ModelVenda {
         this.datavenda = datavenda;
     }
 
-    public void setTotalVenda(double totalVenda) {
+    public void setTotalVenda(float totalVenda) {
         this.totalVenda = totalVenda;
     }
 
+    public ModelProduto getIdProduto() {
+        return idProduto;
+    }
 
+    public void setIdProduto(ModelProduto idProduto) {
+        this.idProduto = idProduto;
+    }
+
+    
 
 }

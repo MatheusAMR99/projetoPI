@@ -69,11 +69,11 @@ public class Carregar extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel2 = new javax.swing.JPanel();
         jpbCarregar = new javax.swing.JProgressBar();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
@@ -84,14 +84,17 @@ public class Carregar extends javax.swing.JFrame {
 
         jpbCarregar.setBackground(new java.awt.Color(153, 153, 255));
         jpbCarregar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jpbCarregar.setForeground(new java.awt.Color(102, 102, 255));
+        jpbCarregar.setForeground(new java.awt.Color(255, 153, 153));
         jpbCarregar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jpbCarregar.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
-        jPanel2.add(jpbCarregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 480, 20));
+        jPanel2.add(jpbCarregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 490, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cherryblossoms.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Stellar.png"))); // NOI18N
         jLabel2.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/icone.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 390));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1010, 390));
+
+        jLabel1.setText("jLabel1");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,6 +147,7 @@ public class Carregar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JProgressBar jpbCarregar;

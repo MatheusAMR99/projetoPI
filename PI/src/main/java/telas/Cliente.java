@@ -19,7 +19,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
-import javax.swing.plaf.synth.SynthTableUI;
 import javax.swing.table.DefaultTableModel;
 import model.ModelCliente;
 import util.Validacao;
@@ -28,12 +27,12 @@ import util.Validacao;
  *
  * @author rlvju
  */
-public class CadastroCliente extends javax.swing.JFrame {
+public class Cliente extends javax.swing.JFrame {
 
     /**
      * Creates new form cadastroCliente
      */
-    public CadastroCliente() {
+    public Cliente() {
         initComponents();
         txtID.setEditable(false);
         txtID.setBackground(Color.LIGHT_GRAY);
@@ -41,12 +40,9 @@ public class CadastroCliente extends javax.swing.JFrame {
         lblMensagem.setText("");
         lblMensagem.setForeground(Color.red);
         //txtDataNascimento.setDate(new Date());
-        txtDataNascimento.setDateFormatString("dd/MM/yyyy");
         txtDataNascimento.setMaxSelectableDate(new Date());
 //        txtDataNascimento.setSelectableDateRange(date, date1);
         listar();
-
-        //COLOCA O ICONE NA TELA
         URL url = this.getClass().getResource("/icone.png");
         Image logo = Toolkit.getDefaultToolkit().getImage(url);
         this.setIconImage(logo);
@@ -65,6 +61,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoFiltro = new javax.swing.ButtonGroup();
         painelPrincipal = new javax.swing.JPanel();
         dadosFormulario = new javax.swing.JPanel();
         dadosCliente = new javax.swing.JPanel();
@@ -103,6 +100,9 @@ public class CadastroCliente extends javax.swing.JFrame {
         tblCliente = new javax.swing.JTable();
         txtPesquisar = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
         botoes = new javax.swing.JPanel();
         btnSalvar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
@@ -119,7 +119,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         dadosFormulario.setToolTipText("Dados do cliente");
 
         dadosCliente.setBackground(new java.awt.Color(202, 221, 241));
-        dadosCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        dadosCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 221, 241)), "Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         dadosCliente.setToolTipText("");
 
         id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -283,7 +283,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         );
 
         dadosEndereco.setBackground(new java.awt.Color(202, 221, 241));
-        dadosEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        dadosEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 221, 241)), "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
         cep.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cep.setText("CEP: ");
@@ -428,7 +428,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         );
 
         dadosTabela.setBackground(new java.awt.Color(202, 221, 241));
-        dadosTabela.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        dadosTabela.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 221, 241)), "Pesquisa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
         tblCliente.setBackground(new java.awt.Color(202, 231, 255));
         tblCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, java.awt.Color.white, java.awt.Color.white));
@@ -474,6 +474,38 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(202, 221, 241));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(202, 221, 241)), "Filtrar por", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        grupoFiltro.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jRadioButton1.setText("Nome");
+        jRadioButton1.setContentAreaFilled(false);
+        jRadioButton1.setFocusPainted(false);
+
+        grupoFiltro.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jRadioButton2.setText("CPF");
+        jRadioButton2.setFocusPainted(false);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jRadioButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jRadioButton1)
+                .addComponent(jRadioButton2))
+        );
+
         javax.swing.GroupLayout dadosTabelaLayout = new javax.swing.GroupLayout(dadosTabela);
         dadosTabela.setLayout(dadosTabelaLayout);
         dadosTabelaLayout.setHorizontalGroup(
@@ -482,22 +514,26 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(dadosTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dadosTabelaLayout.createSequentialGroup()
-                        .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         dadosTabelaLayout.setVerticalGroup(
             dadosTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dadosTabelaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(dadosTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                .addGroup(dadosTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dadosTabelaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(dadosTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                            .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -576,15 +612,15 @@ public class CadastroCliente extends javax.swing.JFrame {
             botoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(botoesLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(78, 78, 78)
-                .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(76, 76, 76)
-                .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(59, 59, 59)
-                .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(112, 112, 112)
-                .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
         );
         botoesLayout.setVerticalGroup(
@@ -648,13 +684,11 @@ public class CadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-
         limparCampos();
         habilitarCampos();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setVisible(false);
     }//GEN-LAST:event_btnVoltarActionPerformed
@@ -666,8 +700,6 @@ public class CadastroCliente extends javax.swing.JFrame {
         } else {
             listarPorNome();
         }
-
-
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -677,7 +709,6 @@ public class CadastroCliente extends javax.swing.JFrame {
             excluir();
             limparCampos();
         }
-
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -720,7 +751,6 @@ public class CadastroCliente extends javax.swing.JFrame {
     public void salvar() {
         String cpf = txtCPF.getText();
         ModelCliente clienteCadastrado = ClienteDAO.buscarCPF(cpf);
-        System.out.println("CPF ENCONTRADO: " + cpf);
         if (txtID.getText().trim().equals("")) {
             if (cpf.equals(clienteCadastrado.getCpf())) {
                 txtCPF.setBorder(new LineBorder(Color.RED));
@@ -747,6 +777,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "cadastro realizado com sucesso");
                 limparCampos();
                 desabilitarCampos();
+                listar();
             }
         } else {
             ModelCliente cliente = new ModelCliente(Integer.parseInt(txtID.getText()), txtNome.getText(), txtCPF.getText(),
@@ -772,7 +803,6 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtTelefone.setText("");
         txtCPF.setText("");
         txtEmail.setText("");
-        // txtDataNascimento.setDate(new Date());
         txtDataNascimento.setBorder(bordaPadrao);
         txtCEP.setText("");
         txtEndereco.setText("");
@@ -822,6 +852,8 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtBairro.setEnabled(false);
         txtCidade.setEnabled(false);
         txtComplemento.setEnabled(false);
+
+        btnSalvar.setEnabled(false);
     }
 
     public void listar() {
@@ -874,7 +906,6 @@ public class CadastroCliente extends javax.swing.JFrame {
     }
 
     public void excluir() {
-
         int linha = tblCliente.getSelectedRow();
         int id = Integer.parseInt(tblCliente.getValueAt(linha, 0).toString());
         boolean retorno = ClienteDAO.excluir(id);
@@ -887,7 +918,6 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     public void editar() {
         habilitarCampos();
-
         int linha = tblCliente.getSelectedRow();
         txtID.setText(tblCliente.getValueAt(linha, 0).toString());
         txtNome.setText(tblCliente.getValueAt(linha, 1).toString());
@@ -896,45 +926,28 @@ public class CadastroCliente extends javax.swing.JFrame {
         txtEmail.setText(tblCliente.getValueAt(linha, 4).toString());
         cboSexo.setSelectedItem(tblCliente.getValueAt(linha, 5).toString());
         cboEstadoCivil.setSelectedItem(tblCliente.getValueAt(linha, 6).toString());
-//        System.out.println("FORMATO DATA " + txtDataNascimento.getDateFormatString());
-//        System.out.println("DATA: " + tblCliente.getValueAt(linha, 7).toString());
-//
-//        txtDataNascimento.setDateFormatString("dd/MM/yyyy");
-
-        //txtDataNascimento.setDateFormatString(tblCliente.getValueAt(linha, 7).toString().replace("-", "/"));
-        //.setDate(new Date(txtDataNascimento.getDateFormatString()));
-        //txtDataNascimento.setDate((Date) tblCliente.getValueAt(linha, 7));
+        
         txtCEP.setText(tblCliente.getValueAt(linha, 8).toString());
         txtEndereco.setText(tblCliente.getValueAt(linha, 9).toString());
         txtBairro.setText(tblCliente.getValueAt(linha, 10).toString());
         txtCidade.setText(tblCliente.getValueAt(linha, 11).toString());
         txtComplemento.setText(tblCliente.getValueAt(linha, 12).toString());
         txtNumero.setText(tblCliente.getValueAt(linha, 13).toString());
-
-        SimpleDateFormat dataCalendario = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat dataBanco = new SimpleDateFormat("yyyy/MM/dd");
-        String dataSalva = dataBanco.format(tblCliente.getValueAt(linha, 7));
-        //dataCalendario.parse(dataSalva);
-
         try {
-            System.out.println("DATA FORMATO CALENDARIO: " + dataCalendario.parse(dataSalva));
-            txtDataNascimento.setDate(dataCalendario.parse(dataSalva));
-//            txtDataNascimento.setDate(formatarData.parse(String.valueOf(tblCliente.getValueAt(linha, 7))));//funciona
-        } catch (ParseException ex) {
-            Logger.getLogger(CadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //System.out.println("Data salva formatada: " + formatarData.format(tblCliente.getValueAt(linha, 7)));
-//        System.out.println("DATA: " + formatarData.format(tblCliente.getValueAt(linha, 7)));
-// Date dataSalva = new Date(tblCliente.getValueAt(linha, 7).toString());//formatarData.format(tblCliente.getValueAt(linha, 7).toString())
-//
-//txtDataNascimento.setDate(dataSalva);
-//txtDataNascimento.setDate( new Date(formatarData.format(tblCliente.getValueAt(linha, 7))));
 
-        // txtDataNascimento.setDateFormatString(formatarData.toPattern());
-        //txtDataNascimento.setDate());
-        //txtDataNascimento.setDate(new java.util.Date(tblCliente.getValueAt(linha, 7).toString()));
-        //txtDataNascimento.setDate(new java.sql.Date(Long.parseLong(tblCliente.getValueAt(linha, 7).toString())));
-        //txtDataNascimento.setDateFormatString(formatarData.toPattern());
+            SimpleDateFormat dataCalendario = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat dataBanco = new SimpleDateFormat("yyyy-MM-dd");
+            String dataSalva = tblCliente.getValueAt(linha, 7).toString();
+            System.out.println("DATA SALVA " + dataSalva);
+            Date dataAtualizar = dataBanco.parse(dataSalva);
+            System.out.println("DATA ATUALIZAR " + dataAtualizar);
+            String atualizarData = dataCalendario.format(dataAtualizar);
+            System.out.println("ATUALIZAR DATA " + atualizarData);
+            txtDataNascimento.setDate(dataAtualizar);
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(this, "Não foi possível encontrar a data salva");
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -954,14 +967,46 @@ public class CadastroCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -998,7 +1043,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroCliente().setVisible(true);
+                new Cliente().setVisible(true);
             }
         });
     }
@@ -1026,7 +1071,11 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel email;
     private javax.swing.JLabel endereco;
     private javax.swing.JLabel estado;
+    private javax.swing.ButtonGroup grupoFiltro;
     private javax.swing.JLabel id;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMensagem;
     private javax.swing.JLabel nome;

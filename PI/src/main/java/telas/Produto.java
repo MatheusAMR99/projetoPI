@@ -20,12 +20,12 @@ import util.Validacao;
  *
  * @author Lucas
  */
-public class TelaProduto extends javax.swing.JFrame {
+public class Produto extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaProduto
      */
-    public TelaProduto() {
+    public Produto() {
         initComponents();
         txtID.setEditable(false);
         txtID.setBackground(Color.LIGHT_GRAY);
@@ -116,7 +116,7 @@ public class TelaProduto extends javax.swing.JFrame {
         categoria.setText("Categoria: ");
 
         cboCategoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bolsas", "Acessórios" }));
+        cboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Anéis", "Bolsas", "Bonés", "Brincos", "Carteiras", "Cachecois", "Chapéus", "Chaveiros", "Cintos", "Colares", "Jóias e Bijuterias", "Mochilas", "Óculos", "Pulseiras", "Relógios" }));
         cboCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         cboCategoria.setEnabled(false);
 
@@ -401,7 +401,6 @@ public class TelaProduto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Selecione um produto para editar");
         } else {
             editar();
-//            limparCampos();
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -486,6 +485,7 @@ public class TelaProduto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "cadastro realizado com sucesso");
             limparCampos();
             desabilitarCampos();
+            listar();
         } else {
             //atualiza
             ModelProduto produto = new ModelProduto();
@@ -499,6 +499,7 @@ public class TelaProduto extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso!");
                 limparCampos();
                 desabilitarCampos();
+                listar();
             } else {
                 JOptionPane.showMessageDialog(this, "Falha ao atualizar informações!");
             }
@@ -577,20 +578,21 @@ public class TelaProduto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaProduto().setVisible(true);
+                new Produto().setVisible(true);
             }
         });
     }

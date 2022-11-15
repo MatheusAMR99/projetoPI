@@ -167,7 +167,6 @@ public class ClienteDAO {
 
         Connection conexao = null;
         PreparedStatement comandoSQL = null;
-        ArrayList<ModelCliente> lista = new ArrayList<>();
         ModelCliente cliente = new ModelCliente();
 
         try {
@@ -177,9 +176,7 @@ public class ClienteDAO {
             ResultSet rs = comandoSQL.executeQuery();
 
             if (rs != null) {
-
                 while (rs.next()) {
-
                     cliente.setIdCliente(rs.getInt("idCliente"));
                     cliente.setNome(rs.getString("nome"));
                     cliente.setCpf(rs.getString("cpf"));
